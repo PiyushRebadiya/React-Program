@@ -1,4 +1,110 @@
 
+// import React, { useState } from 'react'
+// import AddTodo from './AddTodo'
+// import './App.css'
+// import TodoItem from './TodoItem'
+
+// export default function App () {
+
+//     const [main, setmain] = useState({
+//         todos: [
+
+//         ],
+//         status: '',
+//         arr: [],
+//     })
+
+//     const filterHandler = (e) => {
+//         setmain({
+//             status: e.target.value
+//         })
+//         switch (e.target.value) {
+//             case 'active':
+//                 setmain({ arr: main.todos.filter((item) => item.completed === false) });
+//                 break;
+//             case 'completed':
+//                 setmain({ arr: main.todos.filter((item) => item.completed === true) });
+//                 break;
+//             case 'all':
+//                 setmain({ arr: main.todos });
+//                 break;
+//         }
+//     }
+
+//     const toggleComplete = (index) => {
+//         const newTodos = main.todos.map((todo, i) => {
+//             if (index === i) {
+//                 return {
+//                     ...todo,
+//                     completed: !todo.completed
+//                 }
+//             }
+//             return todo;
+//         })
+
+//         setmain({
+//             todos: newTodos
+//         })
+//     }
+
+//     const addTodoToState = (data) => {
+//         const newTodos = main.todos.concat({
+//             text: data.todotext,
+//             completed: data.completed,
+//         });
+//         setmain({
+
+//             todos: newTodos
+//         })
+//     }
+
+//     const deleteTodo = (index) => {
+//         const newTodos = main.todos.filter((todo, i) => {
+//             return index !== i;
+//         })
+//         setmain({
+//             todos: newTodos
+//         })
+//     }
+
+//     const editTodo = (index, newText) => {
+//         const newTodos = main.todos.map((todo, i) => {
+//             if (index === i) {
+//                 return {
+//                     ...todo,
+//                     text: newText
+//                 }
+//             }
+//             return todo
+//         })
+//         setmain({
+//             todos: newTodos
+//         })
+//     }
+
+//     const allDelete = () => {
+//         setmain({
+//             todos: main.todos.filter(todo => !todo.completed)
+//         })
+//     }
+
+//     return (
+//         <div className='App'>
+//             <AddTodo addTodoToState={addTodoToState} filterHandler={filterHandler} />
+//             {main.todos && main.todos.length === 0 && <p class="text-danger">Data Not Found</p>}
+//             {main.arr && main.arr.length > 0 ? main.arr.map((todo, index) => {
+//                 return <TodoItem editTodo={editTodo} deleteTodo={deleteTodo} toggleComplete={toggleComplete} todo={todo} index={index} key={index} />
+//             })
+//                 : main.todos.map((todo, index) => {
+//                     return <TodoItem editTodo={editTodo} deleteTodo={deleteTodo} toggleComplete={toggleComplete} todo={todo} index={index} key={index} />
+//                 })
+//             }
+//             {/* <span> {main.todos.filter((item) => item.completed === false).length}  Item Left</span><br /> */}
+//             <button onClick={allDelete} class="btn btn-link" >Remove All</button>
+//         </div>
+//     )
+// }
+
 import React, { Component } from 'react'
 import AddTodo from './AddTodo'
 import './App.css'
@@ -7,28 +113,13 @@ import TodoItem from './TodoItem'
 export default class App extends Component {
     state = {
         todos: [
-            
+
         ],
         status: '',
         arr: [],
-        emt: '',
     }
 
-    // blank_arr = [...this.state.todos];
-    // componentDidMount() {
-    //     console.log("The component has mounted successfully!");
-
-    //     this.setState({
-    //       completed: true,
-    //     })
-
-    //   }
-
-
-
-
     filterHandler = (e) => {
-
         // console.log(todos.completed);
         this.setState({
             status: e.target.value
@@ -36,7 +127,7 @@ export default class App extends Component {
         // switch (this.state.status) {
         switch (e.target.value) {
             case 'active':
-               this.setState({ arr: this.state.todos.filter((item) => item.completed === false) });
+                this.setState({ arr: this.state.todos.filter((item) => item.completed === false) });
                 break;
             case 'completed':
                 this.setState({ arr: this.state.todos.filter((item) => item.completed === true) });
@@ -44,19 +135,8 @@ export default class App extends Component {
             case 'all':
                 this.setState({ arr: this.state.todos });
                 break;
-
-
         }
-
     }
-
-    //    statusHandler = (e) =>{
-    //         // this.filterHandler();
-    //         console.log(e.target.value);
-    //         this.setState({
-    //                 status : e.target.value
-    //             })
-    //     }
 
     toggleComplete = (index) => {
         const newTodos = this.state.todos.map((todo, i) => {
@@ -75,18 +155,15 @@ export default class App extends Component {
     }
 
     addTodoToState = (data) => {
-            const newTodos = this.state.todos.concat({
-                text: data.todotext,
-                completed: data.completed,
-            });
-            this.setState({
+        const newTodos = this.state.todos.concat({
+            text: data.todotext,
+            completed: data.completed,
+        });
+        this.setState({
 
-                todos: newTodos
-            })
-        }
-    
-
-
+            todos: newTodos
+        })
+    }
 
     deleteTodo = (index) => {
         const newTodos = this.state.todos.filter((todo, i) => {
@@ -122,33 +199,26 @@ export default class App extends Component {
         })
     }
 
-
-
     render() {
-        // console.log("final data", this.state.arr);
-        // console.log(blank_arr);
-
         return (
-            <div className='App'>
+            <div>
                 <AddTodo addTodoToState={this.addTodoToState} deleteAll={this.deleteAll} statusHandler={this.statusHandler} filterHandler={this.filterHandler} />
-              
-               {this.state.todos.length===0 && <p>Data Not Found</p>}
-              
+                {this.state.todos.length === 0 && <p class="text-danger">Data Not Found</p>}
                 {this.state.arr.length > 0 ? this.state.arr.map((todo, index) => {
                     return <TodoItem editTodo={this.editTodo} deleteTodo={this.deleteTodo} toggleComplete={this.toggleComplete} todo={todo} index={index} key={index} />
                 })
-                : this.state.todos.map((todo, index) => {
+                    : this.state.todos.map((todo, index) => {
                         return <TodoItem editTodo={this.editTodo} deleteTodo={this.deleteTodo} toggleComplete={this.toggleComplete} todo={todo} index={index} key={index} />
                     })
                 }
-                
                 <span> {this.state.todos.filter((item) => item.completed === false).length}  Item Left</span><br />
-                <button onClick={this.allDelete}>Remove All</button>
-
+                <button onClick={this.allDelete} className="btn btn-link" >Remove All</button>
             </div>
         )
     }
 }
+
+//End
 
 // To Do List
 // import React, { useState } from 'react'
