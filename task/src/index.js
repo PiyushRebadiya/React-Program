@@ -1,9 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import FullTodo from './FullTodo';
-import Task1 from './Task1';
+import App from './Task 1/App';
 ReactDOM.render(
-    <Task1 />
+    <App />
     , document.getElementById('root'));
 //context API
 // import React from 'react'
