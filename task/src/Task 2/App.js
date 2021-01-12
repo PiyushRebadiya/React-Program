@@ -4,7 +4,6 @@ import LogOut from './LogOut'
 import Admin from './Admin'
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
 
-
 function App() {
     return (
         <>

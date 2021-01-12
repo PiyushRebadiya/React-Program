@@ -7,13 +7,6 @@ function Login() {
     const [Password, setPassword] = useState('')
     const [Loggedin, setLoggedin] = useState(false)
 
-    // const token = localStorage.getItem('token')
-
-
-    // if(Loggedin === null){
-    //     setLoggedin(false)
-    // }
-
     const NameHandler = (e) => {
         setName(e.target.value)
 
@@ -32,6 +25,10 @@ function Login() {
     }
 
     if (Loggedin) {
+        return <Redirect to='/admin' />
+    }
+
+    if (localStorage.key(0) === 'token') {
         return <Redirect to='/admin' />
     }
 

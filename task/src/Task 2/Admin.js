@@ -4,15 +4,12 @@ import { Link, Redirect } from 'react-router-dom'
 
 function Admin() {
 
-    const [Loggedin, setLoggedin] = useState(false)
-
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token','helo');
 
     if (token === null) {
         return <Redirect to='/' />
     }
-    
-  
+
     return (
         <div>
             <h1>This is Admin Page...</h1>
